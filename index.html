@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tema-oscuro {
+        background-color: hsl(0, 0%, 20%);
+        color: white;
+      }
+
+      button {
+        background-color: green;
+        color: white;
+        border-radius: 4px;
+      }
+      div {
+        margin: 64px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button id="boton-magico">boton magico</button>
+
+      <p id="mensaje">mensaje</p>
+    </div>
+    <div>
+      <button id="btn-tema">Tema</button>
+    </div>
+
+    <div>
+      <input id="tarea" />
+      <button id="btn-agregar">agregar</button>
+      <ul id="lista">
+        <h2>Lista</h2>
+      </ul>
+    </div>
+    <script>
+      const btn = document.getElementById("boton-magico");
+      console.log(btn);
+      const msj = document.getElementById("mensaje");
+      console.log(msj);
+
+      btn.addEventListener("click", function () {
+        msj.textContent = "¡Hola, DOM!";
+      });
+
+      const btnTema = document.getElementById("btn-tema");
+      const cuerpo = document.body;
+
+      btnTema.addEventListener("click", function () {
+        cuerpo.classList.toggle("tema-oscuro");
+      });
+
+      const tarea = document.getElementById("tarea");
+      const btnAgregar = document.getElementById("btn-agregar");
+      const lista = document.getElementById("lista");
+
+      btnAgregar.addEventListener("click", function () {
+        if (tarea.value.trim() === "") return;
+        const nuevoLi = document.createElement("li");
+        nuevoLi.textContent = tarea.value;
+        lista.appendChild(nuevoLi);
+        tarea.value = "";
+        tarea.focus();
+      });
+    </script>
+  </body>
+</html>
